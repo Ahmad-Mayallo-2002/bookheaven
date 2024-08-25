@@ -14,7 +14,13 @@ export default function Books() {
         setLoading(true);
         const data: { token: string; id: string; role: string } =
           getLocalStorageData();
-        const response = await getRequests(data.token, data.id, "/all-books");
+        const response = await getRequests(
+          data.token,
+          data.id,
+          "/all-books",
+          undefined,
+          books.length
+        );
         const result = await response.json();
         setBooks(result);
       } catch (error) {

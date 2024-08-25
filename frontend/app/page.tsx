@@ -44,7 +44,11 @@ export default function Home() {
   return (
     <>
       <main className="form-parent">
-        <form action="#" onSubmit={handleSubmit(onSubmit, onError)}>
+        <form
+          action="#"
+          method="POST"
+          onSubmit={handleSubmit(onSubmit, onError)}
+        >
           <h1>Login</h1>
           <div className="grid text-white mb-4">
             <label htmlFor="email">Email: </label>

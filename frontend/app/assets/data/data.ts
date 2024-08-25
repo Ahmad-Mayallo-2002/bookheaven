@@ -87,7 +87,8 @@ const aboutData: aboutData[] = [
 const defaultUserImage: string =
   "https://cdn-icons-png.flaticon.com/128/3177/3177440.png";
 
-const mainUrl: string = "http://localhost:5000/api";
+const mainUrl: string =
+  "https://bookheaven-1qc1xktqy-ahmads-projects-0e29ea31.vercel.app/api/";
 
 function getLocalStorageData(): data {
   if (typeof window !== "undefined") {
