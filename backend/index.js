@@ -21,9 +21,10 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: [""],
-    methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
+    origin: "http://localhost:3000",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
+    optionsSuccessStatus: 204,
   })
 );
 app.use(bodyParser.json({ limit: "10mb" }));
