@@ -19,7 +19,13 @@ const app = express();
 // Middlewares
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: [""],
+    methods: ["GET", "POST", "DELETE", "PUT", "PATCH"],
+    credentials: true,
+  })
+);
 app.use(bodyParser.json({ limit: "10mb" }));
 app.use(
   bodyParser.urlencoded({
