@@ -23,9 +23,7 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true }));
 app.use(
   cors({
-    origin: [
-      "https://bookheaven-1i7zradso-ahmads-projects-0e29ea31.vercel.app",
-    ],
+    origin: ["http://localhost:3001"],
     methods: ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"],
     credentials: true,
   })
