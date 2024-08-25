@@ -23,8 +23,8 @@ export default function Users() {
         userData?.token,
         userData?.id,
         `/all-users`,
-        "",
         limitValue,
+        "",
         skipValue
       );
       const result = await response.json();

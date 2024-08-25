@@ -26,6 +26,7 @@ export default function Book({ params }: { params: { id: string } }) {
           data.token,
           data.id,
           "/all-books/",
+          1,
           params.id
         );
         const result = await response.json();

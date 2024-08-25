@@ -15,14 +15,15 @@ export default function Order() {
   const date = new Date();
   const userData = getLocalStorageData();
   const [loading, setLoading] = React.useState(false);
-  const [orders, setOrders] = React.useState<Array<Book> | ErrorMessage>();
+  const [orders, setOrders] = React.useState<Array<Book> | any>([]);
   const getData = async () => {
     try {
       setLoading(true);
       const response = await getRequests(
         userData?.token,
         userData?.id,
-        "/get-orders"
+        "/get-orders",
+        orders.length
       );
       const result = await response.json();
       setOrders(result);

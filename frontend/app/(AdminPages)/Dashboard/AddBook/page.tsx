@@ -5,7 +5,6 @@ import { toast, ToastContainer } from "react-toastify";
 import getLocalStorageData, {
   Book,
   converImageToBase64,
-  ErrorMessage,
 } from "../../../assets/data/data";
 import { addBook } from "../../../assets/apis/addBook";
 import Loading from "../../../loading";

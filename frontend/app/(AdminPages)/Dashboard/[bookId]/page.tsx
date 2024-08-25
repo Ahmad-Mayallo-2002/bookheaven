@@ -53,7 +53,6 @@ export default function UpdateBookData({
       if (error[object].message) toast.error(error[object].message);
   };
   const { bookId }: { bookId: string } = params;
-  const userData = getLocalStorageData();
   React.useEffect(() => {}, []);
   return (
     <div>

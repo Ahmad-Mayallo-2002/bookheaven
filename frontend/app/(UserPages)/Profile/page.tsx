@@ -14,9 +14,7 @@ import Loading from "../../loading";
 
 export default function Profile() {
   const userData = getLocalStorageData();
-  const [favorites, setFavorites] = React.useState<
-    Array<Book> | ErrorMessage
-  >();
+  const [favorites, setFavorites] = React.useState<Array<Book> | any>();
   const [loading, setLoading] = React.useState(false);
   const getData = async () => {
     try {
@@ -24,7 +22,8 @@ export default function Profile() {
       const response = await getRequests(
         userData?.token,
         userData?.id,
-        "/get-favorites"
+        "/get-favorites",
+        favorites?.length
       );
       const result = await response.json();
       setFavorites(result);

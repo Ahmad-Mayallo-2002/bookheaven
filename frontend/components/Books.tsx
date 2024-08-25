@@ -18,7 +18,6 @@ export default function Books() {
           data.token,
           data.id,
           "/all-books",
-          undefined,
           books.length
         );
         const result = await response.json();

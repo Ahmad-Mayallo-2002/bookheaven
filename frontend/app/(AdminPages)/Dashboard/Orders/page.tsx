@@ -17,7 +17,8 @@ export default function Orders() {
       const response = await getRequests(
         userData?.token,
         userData?.id,
-        "/get-orders-history"
+        "/get-orders-history",
+        data.length
       );
       const result = await response.json();
       console.log(result);
