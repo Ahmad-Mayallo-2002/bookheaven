@@ -14,6 +14,7 @@ export const updateBookApi = async (
       id: id,
     },
     body: JSON.stringify(data),
+    mode: "cors",
   });
   return response;
 };

@@ -9,6 +9,7 @@ export const addBook = async (token: string, id: string, data: Book) => {
       id: id,
     },
     body: JSON.stringify(data),
+    mode: "cors",
   });
   return response;
 };

@@ -5,6 +5,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { loginApi } from "./assets/apis/loginApi";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import Loading from "./loading";
 
 interface FormValues {
   email: string;
@@ -13,9 +14,11 @@ interface FormValues {
 
 export default function Home() {
   const router = useRouter();
+  const [loading, setLoading] = React.useState(false);
   const { register, handleSubmit } = useForm<FormValues>();
   const onSubmit: SubmitHandler<FormValues> = async (data: object) => {
     try {
+      setLoading(true);
       const response = await loginApi({ ...data });
       const result = await response.json();
       if (response?.status === 400) toast.error(result?.msg);
@@ -32,7 +35,10 @@ export default function Home() {
         router.push("/Home");
       }
     } catch (error) {
+      setLoading(false);
       console.error(error);
+    } finally {
+      setLoading(true);
     }
   };
   const onError: SubmitErrorHandler<FormValues> = async (error) => {
@@ -97,7 +103,16 @@ export default function Home() {
               Create New Account
             </Link>
           </p>
-          <button type="submit">Login</button>
+          <button type="submit">
+            {loading ? (
+              <div className="flex gap-2 justify-center">
+                <Loading width={25} height={25} border="2px solid #fff" />{" "}
+                Loading...
+              </div>
+            ) : (
+              "Login"
+            )}
+          </button>
         </form>
         <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />
       </main>

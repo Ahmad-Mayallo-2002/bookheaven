@@ -11,6 +11,7 @@ export const addToFavoriteApi = async (
       authorization: `Bearer ${token}`,
       id: id,
     },
+    mode: "cors",
   });
   return addToFavorite;
 };

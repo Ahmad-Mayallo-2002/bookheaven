@@ -10,6 +10,7 @@ import {
 import { signUpApi } from "../assets/apis/signUpApi";
 import { useForm } from "react-hook-form";
 import Link from "next/link";
+import Loading from "../loading";
 interface errorData {
   username: { message: string };
   email: { message: string };
@@ -18,6 +19,7 @@ interface errorData {
 }
 export default function SignUp() {
   const router = useRouter();
+  const [loading, setLoading] = React.useState(false);
   const { register, handleSubmit } = useForm();
   const [image, setImage] = React.useState<string>(defaultUserImage);
   const [base64, setBase64] = React.useState<string | ArrayBuffer | null>("");
@@ -33,9 +35,9 @@ export default function SignUp() {
       console.error("Error processing image:", error);
     }
   };
-  const onSubmit: any = async (data: User, event: React.FormEvent) => {
-    event.preventDefault();
+  const onSubmit: any = async (data: User) => {
     try {
+      setLoading(true);
       if (data?.avatar) data = { ...data, avatar: String(base64) };
       if (!data?.avatar) {
         data = {
@@ -51,7 +53,10 @@ export default function SignUp() {
       if (response.status === 400) toast.info(result?.msg);
       if (response.status === 200) router.push("/");
     } catch (error) {
+      setLoading(false);
       console.error(error);
+    } finally {
+      setLoading(false);
     }
   };
   const onError: any = async (error: errorData) => {
@@ -175,7 +180,16 @@ export default function SignUp() {
               Login
             </Link>
           </p>
-          <button type="submit">Sign Up</button>
+          <button type="submit">
+            {loading ? (
+              <div className="flex gap-2 justify-center">
+                <Loading width={25} height={25} border="2px solid #fff" />{" "}
+                Loading...
+              </div>
+            ) : (
+              "Sign Up"
+            )}
+          </button>
         </form>
       </main>
       <ToastContainer pauseOnHover={false} pauseOnFocusLoss={false} />

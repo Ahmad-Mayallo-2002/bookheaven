@@ -10,16 +10,16 @@ export default function Loading({
   border: string;
 }) {
   return (
-    <div className="h-[100vh] flex items-center justify-center">
-      <div
-        className="loading rounded-full bg-transparent animate-spin"
+    <span className="flex items-center justify-center">
+      <span
+        className="loading block rounded-full bg-transparent animate-spin"
         style={{
           width: `${width}px`,
           height: `${height}px`,
           border: border,
           borderTopColor: "transparent",
         }}
-      ></div>
-    </div>
+      ></span>
+    </span>
   );
 }

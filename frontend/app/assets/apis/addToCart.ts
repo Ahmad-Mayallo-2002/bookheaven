@@ -11,6 +11,7 @@ export const addToCartApi = async (
       authorization: `Bearer ${token}`,
       id: id,
     },
+    mode: "cors",
   });
   return addToCart;
 };

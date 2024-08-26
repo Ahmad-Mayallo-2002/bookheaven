@@ -12,6 +12,7 @@ export const updateUserAccount = async (
       id: id,
       "Content-Type": "application/json",
     },
+    mode: "cors",
     body: JSON.stringify(data),
   });
   return response;

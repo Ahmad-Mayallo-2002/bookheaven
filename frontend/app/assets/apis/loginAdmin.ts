@@ -7,6 +7,7 @@ export const loginAdminApi: Function = async (data: object): Promise<any> => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify(data),
+    mode: "cors",
   });
   return response;
 };
